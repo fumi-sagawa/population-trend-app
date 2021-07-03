@@ -1,6 +1,6 @@
 import React from 'react';
 import { css } from '@emotion/react';
-import { cssColor } from '../utils/cssVariables';
+import { cssColor, querySelector } from '../utils/cssVariables';
 
 const selected = false;
 
@@ -17,44 +17,45 @@ export const CheckButton: React.VFC = () => {
   );
 };
 
-const checkButton = css`
+const checkButtonBase = css`
   label {
     font-size: 16px;
     font-weight: 600;
-    color: ${cssColor.mainColor};
     padding: 6px 12px;
     border-radius: 999px;
-    background-color: ${cssColor.subColor};
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     cursor: pointer;
+    //親要素で大きさを指定
+    width: 100%;
+    height: 100%;
     //文字中央寄せ
     display: grid;
     align-items: center;
     justify-items: center;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    @media (${querySelector.pc}) {
+      font-size: 17px;
+    }
   }
-
   input {
     display: none;
   }
 `;
 
-const selectedCheckButton = css`
+const checkButton = css`
+  /* ベースボタンを継承 */
+  ${checkButtonBase}
   label {
-    font-size: 16px;
-    font-weight: 600;
-    color: ${cssColor.subColor};
-    padding: 6px 12px;
-    border-radius: 999px;
-    background-color: ${cssColor.mainColor};
-    cursor: pointer;
-    //文字中央寄せ
-    display: grid;
-    align-items: center;
-    justify-items: center;
-    box-shadow: none;
+    color: ${cssColor.mainColor};
+    background-color: ${cssColor.subColor};
   }
+`;
 
-  input {
-    display: none;
+const selectedCheckButton = css`
+  /* ベースボタンを継承 */
+  ${checkButtonBase}
+  label {
+    color: ${cssColor.subColor};
+    background-color: ${cssColor.mainColor};
+    box-shadow: none;
   }
 `;

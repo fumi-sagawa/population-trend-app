@@ -1,6 +1,7 @@
 import React from 'react';
 import { Header } from './Header';
 import { css } from '@emotion/react';
+import { querySelector } from '../utils/cssVariables';
 
 type Props = {
   children: React.ReactNode;
@@ -19,6 +20,11 @@ const layout = css`
   background-color: #f7f7f7;
   min-height: 100vh;
   display: grid;
-  //真ん中よせ
   grid-template-rows: 145px auto;
+  //横幅確保
+  padding: 0px 25px;
+  @media (${querySelector.pc}) {
+    grid-template-rows: 230px auto;
+    padding: 0px 80px;
+  }
 `;

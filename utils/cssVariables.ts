@@ -5,3 +5,6 @@ export const cssColor = {
 };
 
 //メディアクエリ
+export const querySelector = {
+  pc: 'min-width: 767px',
+};

@@ -12,8 +12,8 @@ import {
 
 export const Chart: React.VFC = () => {
   return (
-    <>
-      <ResponsiveContainer width="100%" height="100%">
+    <div>
+      <ResponsiveContainer width="99%" aspect={2} height="100%">
         <LineChart
           data={sampleRechartsPopulationsData}
           margin={{ bottom: 10, left: 10, right: 10 }}
@@ -40,7 +40,7 @@ export const Chart: React.VFC = () => {
           <Line type="monotone" dataKey="青森" stroke="#82ca9d" />
         </LineChart>
       </ResponsiveContainer>
-    </>
+    </div>
   );
 };
 

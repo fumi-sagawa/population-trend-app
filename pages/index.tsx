@@ -2,7 +2,7 @@ import React from 'react';
 import { CheckButton } from '../components/CheckButton';
 import { Chart } from '../components/Chart';
 import { css } from '@emotion/react';
-import { cssColor } from '../utils/cssVariables';
+import { cssColor, querySelector } from '../utils/cssVariables';
 
 const IndexPage: React.VFC = () => (
   <>
@@ -25,14 +25,18 @@ const IndexPage: React.VFC = () => (
 const pageLayout = css`
   display: grid;
   row-gap: 40px;
-  grid-template-rows: 200px auto;
-  //横幅確保
-  padding: 0px 25px;
+  @media (${querySelector.pc}) {
+    grid-template-columns: 2fr 1fr;
+    column-gap: 60px;
+  }
 `;
 
 const optionsLayout = css`
   display: grid;
   row-gap: 20px;
+  @media (${querySelector.pc}) {
+    align-content: start;
+  }
 `;
 
 const optionsTitle = css`
@@ -46,6 +50,10 @@ const buttonGrid = css`
   grid-template-columns: repeat(4, 1fr);
   column-gap: 12px;
   row-gap: 12px;
+  @media (${querySelector.pc}) {
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    grid-auto-rows: 40px;
+  }
 `;
 
 export default IndexPage;
