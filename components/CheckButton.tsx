@@ -56,6 +56,6 @@ const selectedCheckButton = css`
   label {
     color: ${cssColor.subColor};
     background-color: ${cssColor.mainColor};
-    box-shadow: none;
+    box-shadow: rgba(99, 99, 99, 0.2) 10px 6px 8px 0px inset;
   }
 `;

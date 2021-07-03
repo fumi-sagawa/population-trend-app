@@ -1,5 +1,5 @@
 import React from 'react';
-import { sampleRechartsPopulationsData } from '../utils/sample-data';
+import { sampleRechartsPopulationsData } from '../utils/samplePopulationData';
 
 import {
   LineChart,
@@ -7,6 +7,7 @@ import {
   XAxis,
   YAxis,
   Label,
+  Legend,
   ResponsiveContainer,
 } from 'recharts';
 
@@ -32,10 +33,10 @@ export const Chart: React.VFC = () => {
               offset={-5}
               position="insideLeft"
               angle={-90}
-              // css={label}
               style={{ fontSize: '12px' }}
             />
           </YAxis>
+          <Legend verticalAlign="top" align="right" />
           <Line type="monotone" dataKey="北海道" stroke="#8884d8" />
           <Line type="monotone" dataKey="青森" stroke="#82ca9d" />
         </LineChart>

@@ -43,6 +43,9 @@ const optionsTitle = css`
   font-size: 16px;
   font-weight: 600;
   color: ${cssColor.mainColor};
+  @media (${querySelector.pc}) {
+    font-size: 18px;
+  }
 `;
 
 const buttonGrid = css`
