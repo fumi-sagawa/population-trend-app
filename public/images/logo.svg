@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="219" height="57" viewBox="0 0 219 57">
+  <g id="グループ_42" data-name="グループ 42" transform="translate(-66 -53)">
+    <text id="人口推移グラフ" transform="translate(89 107)" fill="#49b2b2" font-size="28" font-family="HeiseiMaruGoStd-W8, Heisei Maru Gothic Std"><tspan x="0" y="0">人口推移グラフ</tspan></text>
+    <text id="都道府県別" transform="translate(66 66)" fill="#49b2b2" font-size="15" font-family="HeiseiMaruGoStd-W8, Heisei Maru Gothic Std"><tspan x="0" y="0">都道府県別</tspan></text>
+    <g id="グループ_41" data-name="グループ 41" transform="translate(63.5 71.668)">
+      <path id="パス_6" data-name="パス 6" d="M4,0,3.567,4.766" transform="translate(59)" fill="none" stroke="#49b2b2" stroke-linecap="round" stroke-width="2"/>
+      <path id="パス_5" data-name="パス 5" d="M13.459,4.928,7.489.058" transform="translate(49)" fill="none" stroke="#49b2b2" stroke-linecap="round" stroke-width="2"/>
+      <line id="線_13" data-name="線 13" x2="15.886" transform="translate(63)" fill="none" stroke="#49b2b2" stroke-linecap="round" stroke-width="2"/>
+      <path id="パス_7" data-name="パス 7" d="M52.237.03,0,0" transform="translate(4)" fill="none" stroke="#49b2b2" stroke-linecap="round" stroke-width="2"/>
+    </g>
+  </g>
+</svg>
