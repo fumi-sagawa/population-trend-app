@@ -4,23 +4,25 @@ import { Chart } from '../components/Chart';
 import { css } from '@emotion/react';
 import { cssColor, querySelector } from '../utils/cssVariables';
 
-const IndexPage: React.VFC = () => (
-  <>
-    <div css={pageLayout}>
-      <Chart />
-      <div css={optionsLayout}>
-        <p css={optionsTitle}>都道府県を選んでください</p>
-        <div css={buttonGrid}>
-          <CheckButton />
-          <CheckButton />
-          <CheckButton />
-          <CheckButton />
-          <CheckButton />
+const IndexPage: React.VFC = () => {
+  return (
+    <>
+      <div css={pageLayout}>
+        <Chart />
+        <div css={optionsLayout}>
+          <p css={optionsTitle}>都道府県を選んでください</p>
+          <div css={buttonGrid}>
+            <CheckButton />
+            <CheckButton />
+            <CheckButton />
+            <CheckButton />
+            <CheckButton />
+          </div>
         </div>
       </div>
-    </div>
-  </>
-);
+    </>
+  );
+};
 
 const pageLayout = css`
   display: grid;
