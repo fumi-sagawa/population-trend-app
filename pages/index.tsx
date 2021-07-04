@@ -45,9 +45,11 @@ const IndexPage: React.VFC = () => {
 
 const pageLayout = css`
   display: grid;
+  grid-template-rows: 300px auto;
   row-gap: 40px;
   @media (${querySelector.pc}) {
     grid-template-columns: 2fr 1fr;
+    grid-template-rows: none;
     column-gap: 60px;
   }
   padding-bottom: 100px;

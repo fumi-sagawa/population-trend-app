@@ -42,7 +42,7 @@ const optionsTitle = css`
 
 const buttonGrid = css`
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   column-gap: 12px;
   row-gap: 12px;
   @media (${querySelector.pc}) {

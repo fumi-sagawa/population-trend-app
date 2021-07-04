@@ -1,14 +1,14 @@
 import React from 'react';
+import { querySelector } from '../utils/cssVariables';
 //store
 import { useRecoilValue } from 'recoil';
 import { populationState } from '../atoms/PopulationAtom';
 //types
 import { Population } from '../interfaces/Population';
 //グラフ描画
-import { graphOption } from '../utils/samplePopulationData4charjs';
 import { css } from '@emotion/react';
 import { Line } from 'react-chartjs-2';
-import { colors, chartDataHolder } from '../utils/chartVariables';
+import { colors, chartDataHolder, graphOption } from '../utils/chartVariables';
 
 export const Chart: React.VFC = () => {
   //chart.jsの仕様に合わせるデータホルダ
@@ -45,5 +45,9 @@ export const Chart: React.VFC = () => {
 const container = css`
   //recharts,chartjsなど
   //canvasで描画される要素を親レイアウトに合わせるためのワークアラウンド
+  @media (${querySelector.pc}) {
+    height: 60vh;
+  }
+
   width: 99%;
 `;

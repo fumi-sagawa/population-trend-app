@@ -1,3 +1,23 @@
+export const graphOption = {
+  scales: {
+    x: {
+      display: true,
+      title: {
+        display: true,
+        text: '年度',
+      },
+    },
+    y: {
+      display: true,
+      title: {
+        display: true,
+        text: '人口',
+      },
+    },
+  },
+  maintainAspectRatio: false,
+};
+
 export const chartDataHolder = {
   labels: [
     // 軸ラベル
