@@ -46,7 +46,7 @@ const buttonGrid = css`
   column-gap: 12px;
   row-gap: 12px;
   @media (${querySelector.pc}) {
-    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
     grid-auto-rows: 40px;
   }
 `;

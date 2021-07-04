@@ -22,7 +22,7 @@ const IndexPage: React.VFC = () => {
   const setPrefecture: SetterOrUpdater<boolean | Prefecture[]> =
     useSetRecoilState(prefacturesState);
 
-  //useSWRを用いた値の出しわけ
+  //useSWRを用いた値の出し分け
   if (error) return <div>Failed to load</div>;
   if (!data) return <div>Loading...</div>;
   if (data) {
@@ -50,6 +50,7 @@ const pageLayout = css`
     grid-template-columns: 2fr 1fr;
     column-gap: 60px;
   }
+  padding-bottom: 100px;
 `;
 
 export default IndexPage;
