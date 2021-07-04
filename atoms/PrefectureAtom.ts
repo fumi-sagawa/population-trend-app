@@ -1,8 +1,8 @@
 import { atom } from 'recoil';
 import { Prefecture } from '../interfaces/Prefecture';
 
-export const prefactureState = atom<Prefecture[]>({
-  key: 'prefecture',
+export const prefacturesState = atom<Prefecture[]>({
+  key: 'prefectures',
   default: [
     {
       prefCode: 13,

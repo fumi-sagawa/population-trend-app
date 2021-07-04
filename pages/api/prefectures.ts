@@ -4,6 +4,7 @@ const handler: NextApiHandler = async (req, res) => {
   // const url = 'https://jsonplaceholder.typicode.com/users';
   // const url = process.env.URL;
   // const response = await fetch(url);
+  console.log('api called');
   const response = await fetch(process.env.REASAS_URL_PREFECTURES, {
     headers: { 'X-API-KEY': process.env.X_API_KEY },
   });
