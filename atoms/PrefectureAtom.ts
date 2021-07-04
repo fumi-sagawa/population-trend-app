@@ -7,7 +7,7 @@ export const prefacturesState = atom<Prefecture[]>({
     {
       prefCode: 13,
       prefName: '東京都',
-      selected: false,
+      selected: true,
     },
   ],
 });

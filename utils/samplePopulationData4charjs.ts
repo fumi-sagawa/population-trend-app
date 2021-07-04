@@ -1,8 +1,7 @@
-import { PopulationTrend } from '../interfaces/PopulationTrend';
-import { PopulationTrendResponse } from '../interfaces/PopulationTrendResponse';
+import { PopulationResponse } from '../interfaces/PopulationResponse';
 
 //population/compositonのレスポンスサンプル
-export const samplePopulationResponse: PopulationTrendResponse = {
+export const samplePopulationResponse: PopulationResponse = {
   message: null,
   result: {
     boundaryYear: 2015,

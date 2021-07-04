@@ -1,4 +1,10 @@
 import React from 'react';
+//store
+import { useRecoilValue } from 'recoil';
+import { populationState } from '../atoms/PopulationAtom';
+//types
+import { Population } from '../interfaces/Population';
+//グラフ描画
 import {
   sampleRechartsPopulationsData4chartjs,
   graphOption,
@@ -7,17 +13,8 @@ import { css } from '@emotion/react';
 import { Line } from 'react-chartjs-2';
 
 export const Chart: React.VFC = () => {
-  const options = {
-    scales: {
-      yAxes: [
-        {
-          ticks: {
-            beginAtZero: false,
-          },
-        },
-      ],
-    },
-  };
+  //人口データ
+  const population: Population[] = useRecoilValue(populationState);
   return (
     <article css={container}>
       <Line
@@ -25,6 +22,14 @@ export const Chart: React.VFC = () => {
         options={graphOption}
         type="line"
       />
+      <div>
+        {population.map((params) => (
+          <div key={params.prefCode}>
+            {params.prefName}
+            {params.populationTrend}
+          </div>
+        ))}
+      </div>
     </article>
   );
 };

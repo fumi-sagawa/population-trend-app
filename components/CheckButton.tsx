@@ -1,22 +1,31 @@
 import React from 'react';
+import axios from 'axios';
 import { css } from '@emotion/react';
 import { cssColor, querySelector } from '../utils/cssVariables';
 //store
 import { useRecoilValue, useSetRecoilState, SetterOrUpdater } from 'recoil';
 import { prefacturesState } from '../atoms/PrefectureAtom';
+import { populationState } from '../atoms/PopulationAtom';
 //types
 import { Prefecture } from '../interfaces/Prefecture';
+import { Population } from '../interfaces/Population';
 
 type Props = {
   item: Prefecture;
 };
 
 export const CheckButton: React.VFC<Props> = ({ item }) => {
+  //ストア定義
+  //都道府県データ
   const prefectures: Prefecture[] = useRecoilValue(prefacturesState);
   const setPrefectures: SetterOrUpdater<Prefecture[]> =
     useSetRecoilState(prefacturesState);
+  //人口データ
+  const population: Population[] = useRecoilValue(populationState);
+  const setpoPulation: SetterOrUpdater<Population[]> =
+    useSetRecoilState(populationState);
 
-  //県データのリスト、親からそれぞれの県データを取得しindexを保持
+  //県データのリスト(prefectures)と親から得た県データを照合しindexを取得
   const index = prefectures.findIndex((listItem) => listItem === item);
 
   //setter関数
@@ -34,15 +43,42 @@ export const CheckButton: React.VFC<Props> = ({ item }) => {
     setPrefectures(newList);
   };
 
+  //データ取得,削除用関数。
+  const replacePopulationData = () => {
+    if (item.selected === false) {
+      //useSWRに置き換えられる可能性あり！！
+      //もしくはフラグ管理でキャッシュの戦略を取る
+      axios
+        .get<Array<number>>(`api/population/${item.prefCode}`)
+        .then((res) => {
+          const newPopulationData: Population = {
+            prefCode: item.prefCode,
+            prefName: item.prefName,
+            populationTrend: res.data,
+          };
+          setpoPulation([...population, newPopulationData]);
+          console.log(population);
+        });
+    } else {
+      const newPopulationDatas = population.filter(
+        (data) => data.prefCode !== item.prefCode,
+      );
+      console.log(newPopulationDatas);
+      setpoPulation(newPopulationDatas);
+    }
+  };
+
+  //発火用関数
+  const onChange = async () => {
+    await toggleItemCompletion();
+    await replacePopulationData();
+  };
+
   return (
     <>
       <div css={item.selected ? selectedCheckButton : checkButton}>
         <label>
-          <input
-            type="checkbox"
-            checked={item.selected}
-            onChange={toggleItemCompletion}
-          />
+          <input type="checkbox" checked={item.selected} onChange={onChange} />
           {item.prefName}
         </label>
       </div>

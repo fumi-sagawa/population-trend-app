@@ -1,5 +1,5 @@
 //test
-export type PopulationTrendResponse = {
+export type PopulationResponse = {
   message: null;
   result: {
     boundaryYear: number;
