@@ -5,14 +5,10 @@ import { populationState } from '../atoms/PopulationAtom';
 //types
 import { Population } from '../interfaces/Population';
 //グラフ描画
-import {
-  sampleRechartsPopulationsData4chartjs,
-  graphOption,
-} from '../utils/samplePopulationData4charjs';
+import { graphOption } from '../utils/samplePopulationData4charjs';
 import { css } from '@emotion/react';
 import { Line } from 'react-chartjs-2';
 import { colors, chartDataHolder } from '../utils/chartVariables';
-import { useState, useEffect } from 'react';
 
 export const Chart: React.VFC = () => {
   //chart.jsの仕様に合わせるデータホルダ

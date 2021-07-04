@@ -9,7 +9,7 @@ export const Header: React.VFC = () => {
       <h1>
         <div>
           <Image
-            src="/images/logo.svg"
+            src="/images/logo_.svg"
             alt="都道府県別人口推移グラフ"
             layout="fill"
             objectFit="contain"
