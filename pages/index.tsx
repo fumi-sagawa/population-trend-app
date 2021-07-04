@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { ButtonGrid } from '../components/ButtonGrid';
 import { Chart } from '../components/Chart';
 import { css } from '@emotion/react';

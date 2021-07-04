@@ -1,14 +1,9 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { CheckButton } from '../components/CheckButton';
 import { css } from '@emotion/react';
 import { cssColor, querySelector } from '../utils/cssVariables';
 //store
-import {
-  useRecoilValue,
-  useSetRecoilState,
-  SetterOrUpdater,
-  useRecoilState,
-} from 'recoil';
+import { useRecoilValue } from 'recoil';
 import { prefacturesState } from '../atoms/PrefectureAtom';
 //types
 import { Prefecture } from '../interfaces/Prefecture';

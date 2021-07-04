@@ -44,5 +44,3 @@ export const Chart: React.VFC = () => {
     </div>
   );
 };
-
-import { css } from '@emotion/react';

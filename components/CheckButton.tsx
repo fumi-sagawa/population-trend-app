@@ -2,34 +2,35 @@ import React from 'react';
 import { css } from '@emotion/react';
 import { cssColor, querySelector } from '../utils/cssVariables';
 //store
-import {
-  useRecoilValue,
-  useSetRecoilState,
-  SetterOrUpdater,
-  useRecoilState,
-} from 'recoil';
+import { useRecoilValue, useSetRecoilState, SetterOrUpdater } from 'recoil';
 import { prefacturesState } from '../atoms/PrefectureAtom';
 //types
 import { Prefecture } from '../interfaces/Prefecture';
 
-// : React.VFC
-export const CheckButton = ({ item }) => {
+type Props = {
+  item: Prefecture;
+};
+
+export const CheckButton: React.VFC<Props> = ({ item }) => {
   const prefectures: Prefecture[] = useRecoilValue(prefacturesState);
   const setPrefectures: SetterOrUpdater<Prefecture[]> =
     useSetRecoilState(prefacturesState);
 
+  //県データのリスト、親からそれぞれの県データを取得しindexを保持
   const index = prefectures.findIndex((listItem) => listItem === item);
 
+  //setter関数
+  //RecoilのあたいはReadOnlyであるため新しい配列を返す
   const replaceItemAtIndex = (arr, index, newValue) => {
     return [...arr.slice(0, index), newValue, ...arr.slice(index + 1)];
   };
 
+  //トグル用関数。上記のsetterを呼び出し新しい値を格納する
   const toggleItemCompletion = () => {
     const newList = replaceItemAtIndex(prefectures, index, {
       ...item,
       selected: !item.selected,
     });
-
     setPrefectures(newList);
   };
 
