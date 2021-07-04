@@ -22,7 +22,7 @@ export const CheckButton: React.VFC<Props> = ({ item }) => {
     useSetRecoilState(prefacturesState);
   //人口データ
   const population: Population[] = useRecoilValue(populationState);
-  const setpoPulation: SetterOrUpdater<Population[]> =
+  const setPopulation: SetterOrUpdater<Population[]> =
     useSetRecoilState(populationState);
 
   //県データのリスト(prefectures)と親から得た県データを照合しindexを取得
@@ -56,15 +56,13 @@ export const CheckButton: React.VFC<Props> = ({ item }) => {
             prefName: item.prefName,
             populationTrend: res.data,
           };
-          setpoPulation([...population, newPopulationData]);
-          console.log(population);
+          setPopulation([...population, newPopulationData]);
         });
     } else {
       const newPopulationDatas = population.filter(
         (data) => data.prefCode !== item.prefCode,
       );
-      console.log(newPopulationDatas);
-      setpoPulation(newPopulationDatas);
+      setPopulation(newPopulationDatas);
     }
   };
 

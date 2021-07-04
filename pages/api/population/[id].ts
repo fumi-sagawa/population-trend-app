@@ -1,4 +1,5 @@
 import { NextApiHandler } from 'next';
+import fetch from 'node-fetch';
 
 const handler: NextApiHandler = async (req, res) => {
   console.log('population api called');

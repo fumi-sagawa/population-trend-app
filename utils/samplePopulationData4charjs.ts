@@ -422,4 +422,5 @@ export const graphOption = {
       },
     },
   },
+  // maintainAspectRatio: false,
 };

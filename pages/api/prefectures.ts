@@ -1,4 +1,5 @@
 import { NextApiHandler } from 'next';
+import fetch from 'node-fetch';
 
 const handler: NextApiHandler = async (req, res) => {
   // const url = 'https://jsonplaceholder.typicode.com/users';
