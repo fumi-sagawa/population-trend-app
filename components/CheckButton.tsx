@@ -1,75 +1,26 @@
 import React from 'react';
-import axios from 'axios';
 import { css } from '@emotion/react';
 import { cssColor, querySelector } from '../utils/cssVariables';
-//store
-import { useRecoilValue, useSetRecoilState, SetterOrUpdater } from 'recoil';
-import { prefacturesState } from '../atoms/PrefectureAtom';
-import { populationState } from '../atoms/PopulationAtom';
+//custom hooks
+import { useReplacePopulationData } from '../hooks/useReplacePopulationData';
+import { useToggleItem } from '../hooks/useToggleItemCompletion';
 //types
 import { Prefecture } from '../interfaces/Prefecture';
-import { Population } from '../interfaces/Population';
 
 type Props = {
   item: Prefecture;
 };
 
 export const CheckButton: React.VFC<Props> = ({ item }) => {
-  //ストア定義
-  //都道府県データ
-  const prefectures: Prefecture[] = useRecoilValue(prefacturesState);
-  const setPrefectures: SetterOrUpdater<Prefecture[]> =
-    useSetRecoilState(prefacturesState);
-  //人口データ
-  const population: Population[] = useRecoilValue(populationState);
-  const setPopulation: SetterOrUpdater<Population[]> =
-    useSetRecoilState(populationState);
-
-  //県データのリスト(prefectures)と親から得た県データを照合しindexを取得
-  const index = prefectures.findIndex((listItem) => listItem === item);
-
-  //setter関数
-  //RecoilのあたいはReadOnlyであるため新しい配列を返す
-  const replaceItemAtIndex = (arr, index, newValue) => {
-    return [...arr.slice(0, index), newValue, ...arr.slice(index + 1)];
-  };
-
-  //トグル用関数。上記のsetterを呼び出し新しい値を格納する
-  const toggleItemCompletion = () => {
-    const newList = replaceItemAtIndex(prefectures, index, {
-      ...item,
-      selected: !item.selected,
-    });
-    setPrefectures(newList);
-  };
-
-  //データ取得,削除用関数。
-  const replacePopulationData = () => {
-    if (item.selected === false) {
-      //useSWRに置き換えられる可能性あり！！
-      //もしくはフラグ管理でキャッシュの戦略を取る
-      axios
-        .get<Array<number>>(`api/population/${item.prefCode}`)
-        .then((res) => {
-          const newPopulationData: Population = {
-            prefCode: item.prefCode,
-            prefName: item.prefName,
-            populationTrend: res.data,
-          };
-          setPopulation([...population, newPopulationData]);
-        });
-    } else {
-      const newPopulationDatas = population.filter(
-        (data) => data.prefCode !== item.prefCode,
-      );
-      setPopulation(newPopulationDatas);
-    }
-  };
-
+  //カスタムフック
+  //item(単数の県データ)とselectedに応じた人口データの追加と削除
+  const replacePopulationData = useReplacePopulationData(item);
+  //item(単数の県データ)とstoreを照合したselectedのトグル関数
+  const toggleItem = useToggleItem(item);
   //発火用関数
-  const onChange = async () => {
-    await toggleItemCompletion();
-    await replacePopulationData();
+  const onChange = () => {
+    toggleItem();
+    replacePopulationData();
   };
 
   return (

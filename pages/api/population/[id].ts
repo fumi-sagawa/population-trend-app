@@ -3,9 +3,7 @@ import fetch from 'node-fetch';
 
 const handler: NextApiHandler = async (req, res) => {
   console.log('population api called');
-  console.log(req.query.id);
   const url = `${process.env.REASAS_URL_POPULATION}${req.query.id}`;
-  console.log(url);
   const response = await fetch(url, {
     headers: { 'X-API-KEY': process.env.X_API_KEY },
   });
@@ -16,7 +14,7 @@ const handler: NextApiHandler = async (req, res) => {
       return prefectureData.value;
     },
   );
-  await res.status(200).json(populationTrend);
+  res.status(200).json(populationTrend);
 };
 
 export default handler;

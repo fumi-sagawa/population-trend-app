@@ -14,9 +14,9 @@ export const Chart: React.VFC = () => {
   //chart.jsの仕様に合わせるデータホルダ
   const dataHolder = chartDataHolder;
 
-  //人口データ
+  //人口データのstate
   const population: Population[] = useRecoilValue(populationState);
-  console.log(population);
+  //chart.jsのkey:datasetで使用するデータの作成
   const populationDataset = population.map((population, index) => {
     return {
       data: population.populationTrend,
@@ -25,7 +25,7 @@ export const Chart: React.VFC = () => {
       backgroundColor: colors[index],
     };
   });
-
+  //描画用データのセット
   dataHolder.datasets = populationDataset;
 
   return (
@@ -34,7 +34,7 @@ export const Chart: React.VFC = () => {
         data={dataHolder}
         options={graphOption}
         type="line"
-        // 再レンダリングのワークアラウンド
+        // 再レンダリングのためのワークアラウンド
         key={Math.random()}
       />
       <div></div>
@@ -42,12 +42,10 @@ export const Chart: React.VFC = () => {
   );
 };
 
+//chartjsを親レイアウトに合わせるためのワークアラウンド
 const container = css`
-  //recharts,chartjsなど
-  //canvasで描画される要素を親レイアウトに合わせるためのワークアラウンド
   @media (${querySelector.pc}) {
     height: 60vh;
   }
-
   width: 99%;
 `;
