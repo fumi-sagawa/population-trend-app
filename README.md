@@ -32,7 +32,7 @@ yarn dev
 ### Recoil
 
 - [React 新しい状態管理ライブラリ Recoil の紹介](https://zenn.dev/ria/articles/2427d0e998c557cdbb96)
-- [worning の issue 記事](https://github.com/facebookexperimental/Recoil/issues/12)
+- [warning の issue 記事](https://github.com/facebookexperimental/Recoil/issues/12)
 
 ### SWR
 
