@@ -3,7 +3,7 @@ import { css } from '@emotion/react';
 import { cssColor, querySelector } from '../utils/cssVariables';
 //custom hooks
 import { useReplacePopulationData } from '../hooks/useReplacePopulationData';
-import { useToggleItem } from '../hooks/useToggleItemCompletion';
+import { useToggleItem } from '../hooks/useToggleItem';
 //types
 import { Prefecture } from '../interfaces/Prefecture';
 
